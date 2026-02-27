@@ -1,0 +1,29 @@
+main{
+    display: flex;
+    flex-direction: column;
+}
+
+
+form{
+    display: flex;
+    gap:1rem;
+    flex-wrap: wrap;
+    
+}
+input{
+    
+}
+
+label{
+        min-width: 100%;
+        text-align: left;
+    }
+
+button{
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+li{
+    list-style: none;
+}
