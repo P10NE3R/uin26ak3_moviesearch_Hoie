@@ -61,10 +61,11 @@ export default function Home(){
              <h1>Filmsøk</h1>
              
              <form>
-                <input aria-label="Søk etter film" id="search" type="search" placeholder="film" onChange={handleChange}/>
+                <input aria-label="Søk etter film" id="search" autoComplete="off" type="search" placeholder="film" onChange={handleChange}/>
              </form>
             <button onClick={getMovies}>Søk</button>
-            <ul>
+            <section>
+                <ul>
                 {results?.map((movie)=> 
                 <li key={movie?.imdbID}>
                     {movie?.Title}
@@ -73,6 +74,8 @@ export default function Home(){
                 </li>
             )}
             </ul>
+            </section>
+            
         </main>
         </>
     )
