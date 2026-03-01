@@ -1,7 +1,7 @@
 import { use, useState } from "react"
 import "../styles/home.scss"
 import { data } from "react-router-dom"
-
+import { useEffect } from 'react';
 export default function Home(){
     
     //Her henter vi inn koden dra .env slik at vi ikke pusher API nøkkelen.
@@ -10,14 +10,24 @@ export default function Home(){
     const [search, setSearch] = useState([])
     const [results, setResults] = useState()
 
-    
+const innitialMovies  = async()=>{
+        try {
+            const response = await fetch(`${baseURL}&s=James-Bond`)
+            const data = await response.json()
+            console.log("fra getMovies", data)   
+            setResults(data?.Search)
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
+
     const getMovies = async()=>{
         //Her lager vi en try-catch blokk for api kallet 
         try {
-            
             //Her lages en respons som basically er film data 
             const response = await fetch(`${baseURL}&s=${search}`)
-            
+
             //Her gjøres data til json. Her brukes response som data variabel
             const data = await response.json()
             
@@ -25,25 +35,20 @@ export default function Home(){
             console.log("fra getMovies", data)   
             
             setResults(data?.Search)
-            console.log(results)
-           
-            
-            
-
         } catch (err) {
             console.error(err)
         }
     }
   
-    
+    //useEffect her starter siden med en fetch av en gitt array med filmer
+    useEffect(()=>{
+       innitialMovies()
+    },[])
 
     const handleChange = (e)=>{
         setSearch(e.target.value)
-     
-       
     }
-    
-    
+
     return(
         <>
           <main>
@@ -63,10 +68,7 @@ export default function Home(){
                 </li>
             )}
             </ul>
-            
-
         </main>
-        
         </>
     )
 }

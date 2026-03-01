@@ -10,7 +10,7 @@ export default function Movie(){
         <article>
             
             <h1>{movie}</h1>
-         
+            
 
         </article>
         
