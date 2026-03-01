@@ -58,19 +58,18 @@ export default function Home(){
     return(
         <>
           <main>
-             <h1>Forside</h1>
+             <h1>Filmsøk</h1>
+             
              <form>
-                <label htmlFor="search">
-                Søk etter film
-                </label>
-                <input id="search" type="search" placeholder="film" onChange={handleChange}/>
+                <input aria-label="Søk etter film" id="search" type="search" placeholder="film" onChange={handleChange}/>
              </form>
             <button onClick={getMovies}>Søk</button>
             <ul>
                 {results?.map((movie)=> 
                 <li key={movie?.imdbID}>
                     {movie?.Title}
-                    <img src={movie?.Poster}></img>
+                    <img src={movie?.Poster}/>
+                    <p>Utgivelsesår: {movie?.Year}</p>
                 </li>
             )}
             </ul>

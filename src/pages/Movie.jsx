@@ -12,6 +12,7 @@ export default function Movie(){
             <h1>{movie}</h1>
             
 
+
         </article>
         
     )
