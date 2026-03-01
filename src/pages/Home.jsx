@@ -10,9 +10,9 @@ export default function Home(){
     const [search, setSearch] = useState([])
     const [results, setResults] = useState()
 
-const innitialMovies  = async()=>{
+    const innitialMovies  = async()=>{
         try {
-            const response = await fetch(`${baseURL}&s=James-Bond`)
+            const response = await fetch(`${baseURL}&s=James-Bond&page=1`)
             const data = await response.json()
             console.log("fra getMovies", data)   
             setResults(data?.Search)
@@ -26,7 +26,7 @@ const innitialMovies  = async()=>{
         //Her lager vi en try-catch blokk for api kallet 
         try {
             //Her lages en respons som basically er film data 
-            const response = await fetch(`${baseURL}&s=${search}`)
+            const response = await fetch(`${baseURL}&s=${search}&page=1`)
 
             //Her gjøres data til json. Her brukes response som data variabel
             const data = await response.json()
@@ -34,6 +34,7 @@ const innitialMovies  = async()=>{
             //Her printes dataen ut i konsollen
             console.log("fra getMovies", data)   
             
+            //Her blir filmer skrevet til resultat array
             setResults(data?.Search)
         } catch (err) {
             console.error(err)
@@ -45,8 +46,13 @@ const innitialMovies  = async()=>{
        innitialMovies()
     },[])
 
+
     const handleChange = (e)=>{
         setSearch(e.target.value)
+        console.log(search)
+        if (search.length > 3) {
+            getMovies()
+        }
     }
 
     return(
