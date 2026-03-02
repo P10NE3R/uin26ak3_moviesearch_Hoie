@@ -1,0 +1,50 @@
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+input {
+  min-width: 100%;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+label {
+  min-width: 100%;
+  text-align: left;
+}
+
+button {
+  margin-top: 1rem;
+  gap: 1rem;
+  min-width: 100%;
+}
+
+section {
+  min-width: 100%;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+li {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}/*# sourceMappingURL=home.css.map */

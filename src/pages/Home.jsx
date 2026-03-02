@@ -1,7 +1,9 @@
 import { use, useState } from "react"
 import "../styles/home.scss"
 import { data } from "react-router-dom"
-import { useEffect } from 'react';
+import { useEffect } from 'react'
+import History from "../components/History"
+
 export default function Home(){
 
 //Her så blir api nøkkelen definert. Den er lagret trygt i .env filen
@@ -14,7 +16,8 @@ const API_KEY = import.meta.env.VITE_API_KEY;
     
 
     const baseURL =`https://www.omdbapi.com/?apikey=${API_KEY}`
-    
+    const [focused, setFocused] = useState(false)
+
     const [search, setSearch] = useState()
     const [results, setResults] = useState()
 
@@ -37,8 +40,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
     const innitialMovies  = async()=>{
         try {
             const response = await fetch(`${baseURL}&s=James-Bond&page=1`)
-            const data = await response.json()
-            console.log("fra getMovies", data)   
+            const data = await response.json()  
             setResults(data?.Search)
         } catch (err) {
             console.error(err)
@@ -56,7 +58,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
             const data = await response.json()
             
             //Her printes dataen ut i konsollen
-            console.log("fra getMovies", data)   
+            
             
             //Her blir filmer skrevet til resultat array
             setResults(data?.Search)
@@ -77,16 +79,11 @@ const API_KEY = import.meta.env.VITE_API_KEY;
     }
 
     //Submit som håndterer innlegg av skjema
-
     const handleSubmit = (e)=>{
         e.preventDefault()
         e.target.reset()
         //Her lagres søkeordet 
-        
         setHistory((prev) => [...prev, search])
-
-
-
     }
     console.log(history)
 
@@ -94,12 +91,19 @@ const API_KEY = import.meta.env.VITE_API_KEY;
         <>
           <main>
              <h1>Filmsøk</h1>
-             
              <form onSubmit={handleSubmit}>
-                <input aria-label="Søk etter film" id="search" autoComplete="off" type="search" placeholder="film" onChange={handleChange}/>
+                <input 
+                    onChange={handleChange} 
+                    aria-label="Søk etter film" 
+                    id="search" autoComplete="off" 
+                    type="search" placeholder="film" 
+                    setSearch={setSearch} 
+                    onFocus={()=> setFocused(true)} 
+                    /*onBlur={()=> setFocused(false)} */
+                />
+                {focused ? <History history={history} setSearch={setSearch} /> : null }
              <button onClick={getMovies}>Søk</button>
              </form>
-            
             <section>
                 <ul>
                 {results?.map((movie)=> 
@@ -110,8 +114,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
                 </li>
             )}
             </ul>
-            </section>
-            
+            </section>  
         </main>
         </>
     )
