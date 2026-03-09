@@ -3,6 +3,9 @@ import "../styles/home.scss"
 import { data } from "react-router-dom"
 import { useEffect } from 'react'
 import History from "../components/History"
+import MovieCard from "../components/MovieCard"
+import MovieSearch from "../components/MovieSearch"
+
 
 export default function Home(){
 
@@ -11,7 +14,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 
 
 
-    //Her henter vi inn koden dra .env slik at vi ikke pusher API nøkkelen.
+    //Her henter vi inn koden fra .env slik at vi ikke pusher API nøkkelen.
    /* const baseURL =`https://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`*/
     
 
@@ -84,6 +87,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
         e.target.reset()
         //Her lagres søkeordet 
         setHistory((prev) => [...prev, search])
+      
     }
     console.log(history)
 
@@ -104,18 +108,13 @@ const API_KEY = import.meta.env.VITE_API_KEY;
                 {focused ? <History history={history} setSearch={setSearch} /> : null }
              <button onClick={getMovies}>Søk</button>
              </form>
-            <section>
-                <ul>
-                {results?.map((movie)=> 
-                <li key={movie?.imdbID}>
-                    {movie?.Title}
-                    <img src={movie?.Poster}/>
-                    <p>Utgivelsesår: {movie?.Year}</p>
-                </li>
-            )}
-            </ul>
-            </section>  
+            {
+
+            }
+            <MovieSearch results={results}/>
+        
         </main>
         </>
     )
 }
+

@@ -39,16 +39,14 @@ button{
 
 section{
     min-width: 100%;
-}
-ul{
     display: flex;
     flex-wrap: wrap;
     gap:0.8rem
+
 }
-//Her vurderer jeg å bruke egene kategorikort for film istedet
-li{
-    list-style: none;
+
+
+article{
     display: flex;
     flex-direction: column;
-    
 }

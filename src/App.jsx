@@ -3,16 +3,23 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import{Routes, Route} from "react-router-dom"
-import Movie from './pages/Movie'
 import Home from "./pages/Home"
+import Layout from './components/Layout'
+import Movie  from "./pages/Movie"
+
+
 function App() {
-  
+
+
 
   return (
-    <Routes>
+    <Layout>
+      <Routes>
         <Route index element={<Home />}/>
-        <Route path=":movie" element={<Movie />}/>
-    </Routes>
+        <Route path="slug/:movie" element={<Movie />} />
+      </Routes>
+    </Layout>
+    
   ) 
 }
 

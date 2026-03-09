@@ -1,16 +1,17 @@
-import { useOutletContext, useParams } from "react-router-dom"
-export default function Movie(){
-    const {movie} = useOutletContext()
-    
-    
-    
-    
-    return(
-        /*Her vil jeg ha inn movie title*/
-        <article>
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { useOutletContext, useParams } from 'react-router-dom'
 
-            <h1>{movie.Title}</h1>
-        </article>
-        
+export default function Movie({ movie }){
+    const {slug} = useParams()
+    
+    //Her må jeg fortsette med å fetche igjen
+    return(
+        <>
+            <section>
+                <h3>{movie.Title}</h3> 
+            </section>
+           
+        </>
     )
-}   
+}
