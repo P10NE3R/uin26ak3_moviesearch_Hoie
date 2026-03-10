@@ -10,7 +10,7 @@ import MovieSearch from "../components/MovieSearch"
 export default function Home(){
 
 //Her så blir api nøkkelen definert. Den er lagret trygt i .env filen
-const API_KEY = import.meta.env.VITE_API_KEY;
+const API_KEY = import.meta.env.VITE_API_KEY
 
 
 
@@ -65,6 +65,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
             
             //Her blir filmer skrevet til resultat array
             setResults(data?.Search)
+            console.log("results",results)
         } catch (err) {
             console.error(err)
         }
@@ -114,6 +115,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
             <MovieSearch results={results}/>
         
         </main>
+     
         </>
     )
 }
