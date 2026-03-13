@@ -21,12 +21,7 @@ export default function Layout({ children }){
             }
            
             <Link to="/">Home</Link>
-            
-            
           
-
-   
-      
         </nav>
 
         {

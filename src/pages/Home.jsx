@@ -70,13 +70,18 @@ const API_KEY = import.meta.env.VITE_API_KEY
   
     
 
-
+    //Her blir endringene ffra søkefeltetet endret, minst 4 bokstaver før søk gjnnomføres
     const handleChange = (e)=>{
         setSearch(e.target.value)
         console.log(search)
-        if (search.length > 3) {
+        try {
+            if (search.length > 3) {
             getMovies()
+        }   
+        } catch (error) {
+            console.log(error)   
         }
+        
     }
 
     //Submit som håndterer innlegg av skjema
@@ -97,9 +102,10 @@ const API_KEY = import.meta.env.VITE_API_KEY
                 <input 
                     onChange={handleChange} 
                     aria-label="Søk etter film" 
-                    id="search" autoComplete="off" 
-                    type="search" placeholder="film" 
-                    setSearch={setSearch} 
+                    id="search" 
+                    autoComplete="off" 
+                    type="search" 
+                    placeholder="film" 
                     onFocus={()=> setFocused(true)} 
                     /*onBlur={()=> setFocused(false)} */
                 />
