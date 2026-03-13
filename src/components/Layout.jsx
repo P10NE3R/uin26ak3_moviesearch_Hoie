@@ -22,10 +22,8 @@ export default function Layout({ children }){
            
             <Link to="/">Home</Link>
             
-            {
             
-            }
-          <Link to="/:movie">Movie</Link>
+          
 
    
       

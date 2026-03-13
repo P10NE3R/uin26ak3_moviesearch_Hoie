@@ -5,7 +5,7 @@ import { useOutletContext, useParams } from 'react-router-dom'
 export default function Movie(){
     
     
-    const { slug } = useParams()
+    const { slug,cat } = useParams()
     const API_KEY = import.meta.env.VITE_API_KEY;
     const baseURL =`https://www.omdbapi.com/?apikey=${API_KEY}`
     const [ movie, setMovie ] = useState()
@@ -41,9 +41,7 @@ export default function Movie(){
     return(
         <>
             <main key={slug}>
-
                     <h3>{movie?.Title}</h3> 
-
                     <img src={movie?.Poster} alt={movie?.Title} />
             </main>
             

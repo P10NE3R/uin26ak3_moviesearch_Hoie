@@ -16,7 +16,7 @@ function App() {
     <Layout>
       <Routes>
         <Route index element={<Home />}/>
-        <Route path="movie/:slug" element={<Movie />} />
+        <Route path="movie/:slug/:cat" element={<Movie />} />
       </Routes>
     </Layout>
     

@@ -15,9 +15,6 @@ const API_KEY = import.meta.env.VITE_API_KEY
 
 
     //Her henter vi inn koden fra .env slik at vi ikke pusher API nøkkelen.
-   /* const baseURL =`https://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`*/
-    
-
     const baseURL =`https://www.omdbapi.com/?apikey=${API_KEY}`
     const [focused, setFocused] = useState(false)
 
@@ -37,7 +34,7 @@ const API_KEY = import.meta.env.VITE_API_KEY
 
     //useEffect her starter siden med en fetch av en gitt array med filmer
     useEffect(()=>{
-       //innitialMovies()
+       innitialMovies()
     },[])
         
     const innitialMovies  = async()=>{
